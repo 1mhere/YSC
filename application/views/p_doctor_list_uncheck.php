@@ -161,51 +161,19 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <?php foreach ($data as $d) {
+              		?>
                 <tr>
-                  <td>14/08/2016</td>
-                  <td>08.00</td>
-                  <td>Andi Nugraha</td>
+                  <td><?php echo $d['date']; ?></td>
+                  <td><?php echo $d['slot']; ?></td>
+                  <td><?php echo $d['username']; ?></td>
                   <td>
-                      <a href="<?php echo base_url()."index.php/doctor/list_uncheck" ?>" class="btn btn-default btn-flat">Skip</a>
-                      <a href="<?php echo base_url()."index.php/doctor/list_check" ?>" class="btn btn-default btn-flat">Check In</a>
+                    <a href="<?php echo base_url()."index.php/doctor/skip/".$d['id']; ?>" class="btn btn-default btn-flat">Skip</a>
+                    <a href="<?php echo base_url()."index.php/doctor/check_in/".$d['id']; ?>" class="btn btn-default btn-flat">Check In</a>
                   </td>
                 </tr>
-                <tr>
-                  <td>14/08/2016</td>
-                  <td>08.15</td>
-                  <td>Budi Santoso</td>
-                  <td>
-                      <a href="<?php echo base_url()."index.php/doctor/list_uncheck" ?>" class="btn btn-default btn-flat">Skip</a>
-                      <a href="<?php echo base_url()."index.php/doctor/list_check" ?>" class="btn btn-default btn-flat">Check In</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>14/08/2016</td>
-                  <td>08.30</td>
-                  <td>Cepi Ramdani</td>
-                  <td>
-                      <a href="<?php echo base_url()."index.php/doctor/list_uncheck" ?>" class="btn btn-default btn-flat">Skip</a>
-                      <a href="<?php echo base_url()."index.php/doctor/list_check" ?>" class="btn btn-default btn-flat">Check In</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>14/08/2016</td>
-                  <td>10.15</td>
-                  <td>Doni</td>
-                  <td>
-                      <a href="<?php echo base_url()."index.php/doctor/list_uncheck" ?>" class="btn btn-default btn-flat">Skip</a>
-                      <a href="<?php echo base_url()."index.php/doctor/list_check" ?>" class="btn btn-default btn-flat">Check In</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>15/08/2016</td>
-                  <td>08.00</td>
-                  <td>Mirna Agustian</td>
-                  <td>
-                      <a href="<?php echo base_url()."index.php/doctor/list_uncheck" ?>" class="btn btn-default btn-flat">Skip</a>
-                      <a href="<?php echo base_url()."index.php/doctor/list_check" ?>" class="btn btn-default btn-flat">Check In</a>
-                  </td>
-                </tr>
+                <?php
+                } ?>
                 </tbody>
               </table>
             </div>

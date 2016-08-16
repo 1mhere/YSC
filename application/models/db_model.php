@@ -46,5 +46,14 @@ class Db_model extends CI_Model {
 		return $res;
 	}
 
+	public function GetSlot($where=""){
+		$data = $this->db->query('select * from appointment where booked=1 and checkin ='.$where);
+		return $data->result_array();
+	}
+
+	public function GetAllSlot(){
+		$data = $this->db->query('select * from appointment');
+		return $data->result_array();
+	}
 
 }

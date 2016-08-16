@@ -6,9 +6,10 @@ class Doctor extends CI_Controller {
 	public function index()
 	{
 		$cek= $this->session->userdata('status');
-		if($cek=='doctor')
-			$this->load->view('p_doctor');
-		else{
+		if($cek=='doctor'){
+			$data['data'] = $this->db_model->GetAllSlot();
+			$this->load->view('p_doctor',$data);
+		}else{
 			redirect("auth");
 		}
 	}
@@ -25,18 +26,20 @@ class Doctor extends CI_Controller {
 	public function list_uncheck()
 	{
 		$cek= $this->session->userdata('username');
-		if($cek=='Doctor')
-			$this->load->view('p_doctor_list_uncheck');
-		else
+		if($cek=='Doctor'){
+				$data['data'] = $this->db_model->GetSlot(0);
+				$this->load->view('p_doctor_list_uncheck',$data);
+		}else
 			redirect("auth");
 	}
 
 	public function list_check()
 	{
 		$cek= $this->session->userdata('username');
-		if($cek=='Doctor')
-			$this->load->view('p_doctor_list_check');
-		else
+		if($cek=='Doctor'){
+				$data['data'] = $this->db_model->GetSlot(1);
+				$this->load->view('p_doctor_list_check',$data);
+		}else
 			redirect("auth");
 	}
 
@@ -85,5 +88,66 @@ class Doctor extends CI_Controller {
 				$this->session->set_flashdata('pesan','Slot exist');
 				redirect('doctor');
 			}
+		}
+
+		public function do_delete($id){
+				$where = array('id' => $id);
+					$res= $this->db_model->DeleteData('appointment',$where);
+				if($res>=1){
+					$this->session->set_flashdata('pesan','Delete data sukses');
+					redirect('doctor');
+				}
+		}
+
+		public function done($id){
+				$where = array('id' => $id);
+					$res= $this->db_model->DeleteData('appointment',$where);
+				if($res>=1){
+					$this->session->set_flashdata('pesan','patient telah selesai diperiksa');
+					redirect('doctor/list_check');
+				}
+		}
+
+		public function not_show($id){
+	      $data_update = array(
+	  				'checkin' => 0
+	  			);
+	  		$where = array('id' => $id);
+	  		$res = $this->db_model->UpdateData('appointment',$data_update,$where);
+	  		if($res>=1){
+	  			$this->session->set_flashdata('pesan','Patient kembali ke unchecked list');
+	  			redirect('doctor/list_check');
+	  		}
+		}
+
+		public function check_in($id){
+	      $data_update = array(
+	  				'checkin' => 1
+	  			);
+	  		$where = array('id' => $id);
+	  		$res = $this->db_model->UpdateData('appointment',$data_update,$where);
+	  		if($res>=1){
+	  			$this->session->set_flashdata('pesan','Patient kembali ke unchecked list');
+	  			redirect('doctor/list_check');
+	  		}
+		}
+
+		public function skip($id){
+				$cek = $this->db->get_where('appointment',array('id' => $id));
+				$ambil = $cek->row();
+				$data_insert = array(
+						'date' => $ambil->date,
+						'slot' => $ambil->slot,
+						'username' => $ambil->username,
+						'checkin' => false,
+						'booked' => true,
+				);
+				$res = $this->db_model->InsertData('appointment',$data_insert);
+				$where = array('id' => $id);
+					$res= $this->db_model->DeleteData('appointment',$where);
+				if($res>=1){
+					$this->session->set_flashdata('pesan','Appointment skipped');
+					redirect('doctor/list_uncheck');
+				}
 		}
 }
