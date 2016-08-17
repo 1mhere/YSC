@@ -54,7 +54,7 @@ class Doctor extends CI_Controller {
 	  				'password' => md5($newpass)
 	  			);
 	  		$where = array('username' => $username);
-	  		$res = $this->db_model->UpdateData('user',$data_update,$where);
+	  		$res = $this->db_model->UpdateData('userp',$data_update,$where);
 	  		if($res>=1){
 	  			$this->session->set_flashdata('pesan','Change Password Success');
 	  			redirect('auth');

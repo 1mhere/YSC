@@ -25,7 +25,7 @@ class Auth extends CI_Controller {
     $u = $this->input->post('username');
 		$p = md5($this->input->post('password'));
 
-    $cek_login = $this->db->get_where('user',array('username' => $u, 'password'=> $p));
+    $cek_login = $this->db->get_where('userp',array('username' => $u, 'password'=> $p));
     if($cek_login->num_rows()>0){
       $ambil = $cek_login->row();
       if($u == $ambil->username && $p== $ambil->password){
@@ -72,7 +72,7 @@ class Auth extends CI_Controller {
 		$email = $_POST['email'];
 		$phone = $_POST['phone'];
     $password = $_POST['password'];
-    $cek_login = $this->db->get_where('user',array('username' => $name));
+    $cek_login = $this->db->get_where('userp',array('username' => $name));
     if($cek_login->num_rows()==0){
     		$data_insert = array(
     				'username' => $name,
@@ -81,7 +81,7 @@ class Auth extends CI_Controller {
             'password' => md5($password),
             'status' => 'patient'
         );
-    		$res = $this->db_model->InsertData('user',$data_insert);
+    		$res = $this->db_model->InsertData('userp',$data_insert);
     		if($res>0){
           $this->session->set_userdata($data_insert);
     			$this->session->set_flashdata('pesan','Add User Success');

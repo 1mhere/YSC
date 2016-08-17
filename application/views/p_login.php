@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <a href="<?php echo base_url() ?>" <b>YSC</b> app</a>
   </div>
   <div class="register-box-body">
-    <p class="login-box-msg">Register a new account</p>
+    <p class="login-box-msg">Login to your account</p>
 
     <form action="<?php echo base_url()."index.php/auth/login" ?>" method="post">
       <div class="form-group has-feedback">
