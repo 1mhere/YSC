@@ -157,6 +157,7 @@
                   <th>Date</th>
                   <th>Slot</th>
                   <th>Name</th>
+                  <th>Number of Skip</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -167,6 +168,7 @@
                   <td><?php echo $d['date']; ?></td>
                   <td><?php echo $d['slot']; ?></td>
                   <td><?php echo $d['username']; ?></td>
+                  <td><?php echo $d['skip']; ?></td>
                   <td>
                     <a href="<?php echo base_url()."index.php/doctor/skip/".$d['id']; ?>" class="btn btn-default btn-flat">Skip</a>
                     <a href="<?php echo base_url()."index.php/doctor/check_in/".$d['id']; ?>" class="btn btn-default btn-flat">Check In</a>

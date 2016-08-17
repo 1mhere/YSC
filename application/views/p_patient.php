@@ -106,6 +106,11 @@
             <i class="fa fa-dashboard"></i> <span>My Appointment</span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="<?php echo base_url()."index.php/patient/pHistory" ?>">
+            <i class="fa fa-files-o"></i> <span>History</span>
+          </a>
+        </li>
         <li>
           <a href="<?php echo base_url()."index.php/patient/pass" ?>">
             <i class="fa fa-th"></i> <span>Edit Password</span>
@@ -133,13 +138,6 @@
       <div class="box  col-md-4">
         <div class="box-header with-border">
           <h3 class="box-title">My Appointment</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div>
         </div>
           <div class="form-group">
           <?php foreach ($data as $d) {
@@ -148,13 +146,13 @@
               <h2><?php echo $d['date']; ?></h2>
               <h5>Slot : </h5>
               <h2><?php echo $d['slot']; ?></h2>
-          <?php
-          } ?>
             <br>
-                <a href="<?php echo base_url()."index.php/patient/cancelApp/".$d['id'] ?>" class="btn btn-default btn-flat">Cancel Appointment</a>
-              <h5>.</h5>
+                <a href="<?php echo base_url()."index.php/patient/cancelApp/".$d['id'] ;?>" class="btn btn-default btn-flat">Cancel Appointment</a>
+                <?php
+                } ?>
           </div>
         </div>
+        
     </section>
     <!-- /.content -->
   </div>

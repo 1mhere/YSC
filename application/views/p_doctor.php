@@ -155,6 +155,31 @@
               <h3 class="box-title">Available Slot</h3>
             </div>
             <!-- /.box-header -->
+
+            <!-- form start -->
+            <form class="form-horizontal" method="Post" action = "<?php echo base_url()."index.php/doctor/appdate" ?>" >
+              <div class="box-body">
+                <!-- Date -->
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                        <label>Date:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                            <input type="text" class="form-control pull-right" id="datepicker" name="tgl">
+                        </div>
+                      </div>
+                    <!-- /.input group -->
+                  </div>
+                <!-- /.form group -->
+                  <?php echo $this->session->flashdata('pesan'); ?>
+              </div><!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" name="add" class="btn btn-default ">Choose Date</button>
+              </div><!-- /.box-footer -->
+            </form>
+
             <div class="box-body">
               <table id="example2" class="table table-bordered table-hover col-sm-4">
                 <thead>

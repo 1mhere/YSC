@@ -106,6 +106,11 @@
             <i class="fa fa-dashboard"></i> <span>My Appointment</span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="<?php echo base_url()."index.php/patient/pHistory" ?>">
+            <i class="fa fa-files-o"></i> <span>History</span>
+          </a>
+        </li>
         <li>
           <a href="<?php echo base_url()."index.php/patient/pass" ?>">
             <i class="fa fa-th"></i> <span>Edit Password</span>

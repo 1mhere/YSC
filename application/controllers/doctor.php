@@ -100,17 +100,23 @@ class Doctor extends CI_Controller {
 		}
 
 		public function done($id){
-				$where = array('id' => $id);
-					$res= $this->db_model->DeleteData('appointment',$where);
-				if($res>=1){
-					$this->session->set_flashdata('pesan','patient telah selesai diperiksa');
-					redirect('doctor/list_check');
-				}
+			$data_update = array(
+					'Done' => 1
+				);
+			$where = array('id' => $id);
+			$res = $this->db_model->UpdateData('appointment',$data_update,$where);
+			if($res>=1){
+				$this->session->set_flashdata('pesan','Patient Done!');
+				redirect('doctor/list_check');
+			}
 		}
 
 		public function not_show($id){
+			$cek = $this->db->get_where('appointment',array('id' => $id));
+			$ambil = $cek->row();
 	      $data_update = array(
-	  				'checkin' => 0
+	  				'checkin' => 0,
+						'skip' => $ambil->skip + 1,
 	  			);
 	  		$where = array('id' => $id);
 	  		$res = $this->db_model->UpdateData('appointment',$data_update,$where);
@@ -128,26 +134,34 @@ class Doctor extends CI_Controller {
 	  		$res = $this->db_model->UpdateData('appointment',$data_update,$where);
 	  		if($res>=1){
 	  			$this->session->set_flashdata('pesan','Patient kembali ke unchecked list');
-	  			redirect('doctor/list_check');
+	  			redirect('doctor/list_uncheck');
 	  		}
 		}
 
 		public function skip($id){
 				$cek = $this->db->get_where('appointment',array('id' => $id));
 				$ambil = $cek->row();
-				$data_insert = array(
-						'date' => $ambil->date,
-						'slot' => $ambil->slot,
-						'username' => $ambil->username,
-						'checkin' => false,
-						'booked' => true,
-				);
-				$res = $this->db_model->InsertData('appointment',$data_insert);
+				$data_update = array(
+						'skip' => $ambil->skip + 1,
+					);
 				$where = array('id' => $id);
-					$res= $this->db_model->DeleteData('appointment',$where);
+				$res = $this->db_model->UpdateData('appointment',$data_update,$where);
 				if($res>=1){
-					$this->session->set_flashdata('pesan','Appointment skipped');
+					$this->session->set_flashdata('pesan','Patient kembali ke unchecked list');
 					redirect('doctor/list_uncheck');
 				}
 		}
+
+		public function appdate()
+		{
+			$tgl= $_POST['tgl'];
+			$cek= $this->session->userdata('status');
+			if($cek=='doctor'){
+				$data['data'] = $this->db_model->GetAllSlotDate($tgl);
+				$this->load->view('p_doctor',$data);
+			}else{
+				redirect("auth");
+			}
+		}
+
 }

@@ -31,7 +31,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="" class="logo">
+    <a href="<?php echo base_url()."assets"?>/index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>Y</b>SC</span>
       <!-- logo for regular state and mobile devices -->
@@ -128,52 +128,40 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Edit Password
-        <small>To secure your account</small>
+        History
+        <small>The History of Your Appointment</small>
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
+      <div class="box  col-md-4">
         <div class="box-header with-border">
-          <h3 class="box-title">Edit Password</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div>
+          <h3 class="box-title">History</h3>
         </div>
-        <!-- form start -->
-          <form class="form-horizontal" method="Post" action = "<?php echo base_url()."index.php/patient/do_update" ?> ">
-            <div class="box-body">
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">New Password</label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" name="newpass" placeholder="New Password">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Confirm Password</label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
-                </div>
-              </div>
-                  	<?php echo "<alert>".$this->session->flashdata('pesan')."</alert>"; ?>
-               </div><!-- /.box-body -->
-            <div class="box-footer">
-              <button type="reset" class="btn btn-default">Cancel</button>
-              <button type="submit" name="edit" class="btn btn-info pull-right">Save</button>
-            </div><!-- /.box-footer -->
-          </form>
-
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Slot</th>
+            </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($data as $d) {
+              ?>
+            <tr>
+              <td><?php echo $d['date']; ?></td>
+              <td><?php echo $d['slot']; ?></td>
+            </tr>
+            <?php
+            } ?>
+            </tbody>
+          </table>
         </div>
-        <!-- /.box -->
-
+        <!-- /.box-body -->
+        </div>
     </section>
     <!-- /.content -->
   </div>

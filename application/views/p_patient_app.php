@@ -108,6 +108,11 @@
             <i class="fa fa-dashboard"></i> <span>My Appointment</span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="<?php echo base_url()."index.php/patient/pHistory" ?>">
+            <i class="fa fa-files-o"></i> <span>History</span>
+          </a>
+        </li>
         <li>
           <a href="<?php echo base_url()."index.php/patient/pass" ?>">
             <i class="fa fa-th"></i> <span>Edit Password</span>
@@ -137,15 +142,30 @@
           <h3 class="box-title">Make New Appointment</h3>
         </div>
           <div class="form-group">
-            <h5>  Date</h5>
-            <div class="input-group date">
-              <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-              </div>
+            <!-- form start -->
+            <form class="form-horizontal" method="Post" action = "<?php echo base_url()."index.php/patient/appdate" ?>">
+              <div class="box-body">
+                <!-- Date -->
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                        <label>Date:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                            <input type="text" class="form-control pull-right" id="datepicker" name="tgl">
+                        </div>
+                      </div>
+                    <!-- /.input group -->
+                  </div>
+                <!-- /.form group -->
+                  <?php echo $this->session->flashdata('pesan'); ?>
+              </div><!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" name="add" class="btn btn-default ">Choose Date</button>
+              </div><!-- /.box-footer -->
+            </form>
 
-                <input type="text" class="form-control pull-right" id="datepicker">
-            </div>
-            <br>
             <div class="box-body">
               <table id="example2" class="table table-bordered table-hover col-sm-4">
                 <thead>

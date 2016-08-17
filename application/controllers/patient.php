@@ -8,8 +8,13 @@ class Patient extends CI_Controller {
 		$cek= $this->session->userdata('status');
 		$name= $this->session->userdata('username');
 		if($cek=='patient'){
-			$data['data'] = $this->db_model->GetPatientSlot($name);
-			$this->load->view('p_patient',$data);
+			$cek_login = $this->db->get_where('appointment',array('username' => $name, 'done' => 0));
+			if($cek_login->num_rows()>0){
+					$data['data'] = $this->db_model->GetPatientSlot($name);
+					$this->load->view('p_patient',$data);
+			}else{
+					$this->load->view('p_patient_empty');
+			}
 		}
 		else{
 			redirect("auth");
@@ -45,6 +50,18 @@ class Patient extends CI_Controller {
 		}
 	}
 
+	public function appdate()
+	{
+		$tgl= $_POST['tgl'];
+		$cek= $this->session->userdata('status');
+		if($cek=='patient'){
+			$data['data'] = $this->db_model->GetDateSlot($tgl);
+			$this->load->view('p_patient_app',$data);
+		}else{
+			redirect("auth");
+		}
+	}
+
 	//edit password
 		public function do_update(){
 			$username= $this->session->userdata('username');
@@ -67,17 +84,13 @@ class Patient extends CI_Controller {
 			}
 		}
 
-		public function GetSlot($where=""){
-			$data = $this->db->query('select * from appointment where booked=1 and checkin ='.$where);
-			return $data->result_array();
-		}
+
 
 //make an appointment
 		public function MakeApp($id){
 			$name = $this->session->userdata('username');
 	      $data_update = array(
 	  				'username' => $name,
-						'booked' => 1,
 	  			);
 	  		$where = array('id' => $id);
 	  		$res = $this->db_model->UpdateData('appointment',$data_update,$where);
@@ -89,11 +102,26 @@ class Patient extends CI_Controller {
 
 		//cancel appointment
 		public function CancelApp($id){
+				$data_update = array(
+						'username' => NULL,
+					);
 				$where = array('id' => $id);
-					$res= $this->db_model->DeleteData('appointment',$where);
+				$res = $this->db_model->UpdateData('appointment',$data_update,$where);
 				if($res>=1){
-					$this->session->set_flashdata('pesan','Appointment already cancelled');
-					redirect('patient/kosong');
+					$this->session->set_flashdata('pesan','Appointmern already created!');
+					redirect('patient');
 				}
+		}
+
+		public function pHistory()
+		{
+			$name= $this->session->userdata('username');
+			$cek= $this->session->userdata('status');
+			if($cek=='patient'){
+				$data['data'] = $this->db_model->GetHistory($name);
+				$this->load->view('p_patient_history',$data);
+			}else{
+				redirect("auth");
+			}
 		}
 }
