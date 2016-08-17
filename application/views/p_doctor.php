@@ -149,7 +149,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Available Slot</h3>
@@ -214,52 +214,39 @@
             <div class="box-header">
               <h3 class="box-title">Add a Slot</h3>
             </div>
-            								<!-- form start -->
-                            <form class="form-horizontal" method="Post" action = "doctor/addslot">
-                              <div class="box-body">
-                                <!-- Date -->
-                                  <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <label>Date:</label>
-                                        <div class="input-group date">
-                                          <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                          </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker" name="tgl">
-                                        </div>
-                                        <br>
-                                        <label>Time:</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                              <i class="fa fa-clock-o"></i>
-                                            </div>
-                                            <input type="time" class="form-control" name="slot" >
-                                        </div>
-                                      </div>
-                                    <!-- /.input group -->
-                                  </div>
-                                <!-- /.form group -->
-                                	<?php echo $this->session->flashdata('pesan'); ?>
-                              </div><!-- /.box-body -->
-                              <div class="box-footer">
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                                <button type="submit" name="add" class="btn btn-info pull-right">Add</button>
-                              </div><!-- /.box-footer -->
-                            </form>
+            <!-- form start -->
+            <form class="form-horizontal" method="Post" action = "doctor/addslot">
+              <div class="box-body">
+                <!-- Date -->
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                        <label>Date:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                            <input type="text" class="form-control pull-right" id="datepicker" name="tgl">
+                        </div>
+                        <br>
+                        <label>Time:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="fa fa-clock-o"></i>
+                            </div>
+                            <input type="time" class="form-control" name="slot" >
+                        </div>
+                      </div>
+                    <!-- /.input group -->
+                  </div>
+                <!-- /.form group -->
+                  <?php echo $this->session->flashdata('pesan'); ?>
+              </div><!-- /.box-body -->
+              <div class="box-footer">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" name="add" class="btn btn-info pull-right">Add</button>
+              </div><!-- /.box-footer -->
+            </form>
           </div>
-            <!-- /.box-header -->
-            <!-- <div class="form-group">
-              <label>Date:</label>
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
-                </div>
-                <input type="date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
-              </div>
-              <button class="btn btn-block btn-primary btn-flat" type="button">Primary</button>
-            </div> -->
-            <!-- /.box-body -->
-
       </div>
     </div>
     </section>

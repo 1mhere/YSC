@@ -7,66 +7,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" href="<?php echo base_url()."assets/bootstrap/css/bootstrap.css" ?>" type="text/css" />
 	<link rel="stylesheet" href="<?php echo base_url()."assets/dist/css/AdminLTE.min.css"; ?>" type="text/css" >
 
-	<style>
-		.loginbox{
-			margin: 180px auto;
-			width: 450px;
-			position:relative;
-			border-radius :15px;
-			background: #fff;
-		}
-		body{
-			background-color: rgb(209,209,209);
-		}
-		</style>
 
 </head>
-<body>
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="register-logo">
+    <a href="<?php echo base_url() ?>" <b>YSC</b> app</a>
+  </div>
+  <div class="register-box-body">
+    <p class="login-box-msg">Register a new account</p>
 
-<div class="box box-info loginbox">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Login Form</h3>
-                </div><!-- /.box-header -->
-								<!-- form start -->
-								<?php
-										if(isset($_POST['masuk'])){
-												$u = $this->input->post('usr');
-												$p = $this->input->post('pwd');
-												$this->db_model->getLogin($u,$p);
-										}
-								?>
+    <form action="<?php echo base_url()."index.php/auth/login" ?>" method="post">
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Username" name="username">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+			<div class="form-group has-feedback">
+				<input type="password" class="form-control" placeholder="Password" name="password">
+				<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+			</div>
+						<?php echo "<alert>".$this->session->flashdata('pesan')."</alert>"; ?>
+      <div class="row">
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" >Login</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+		<br>
+    <a href="<?php echo base_url()."index.php/auth" ?>" class="text-center">I already have an account</a>
+  </div>
+  <!-- /.form-box -->
+</div>
+<!-- /.register-box -->
 
-                <form class="form-horizontal" method="Post" action = "">
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="usr" placeholder="Username">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                      <div class="col-sm-10">
-                        <input type="password" class="form-control" name="pwd" placeholder="Password">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Remember me
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                     </div><!-- /.box-body -->
-										 <!-- <?php echo $this->session->flashdata('pesan'); ?> -->
-                  <div class="box-footer">
-                    <button type="reset" class="btn btn-default">Cancel</button>
-                    <button type="submit" name="masuk" class="btn btn-info pull-right">Sign in</button>
-                  </div><!-- /.box-footer -->
-                </form>
-              </div><!-- /.box -->
-
+<!-- jQuery 2.2.3 -->
+<script src="<?php echo base_url()."assets/plugins/jQuery/jquery-2.2.3.min.js" ?>"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="<?php echo base_url()."assets/bootstrap/js/bootstrap.min.js" ?>"></script>
+<!-- iCheck -->
+<script src="<?php echo base_url()."assets/plugins/iCheck/icheck.min.js" ?>"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
 </body>
 </html>

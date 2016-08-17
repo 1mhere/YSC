@@ -137,7 +137,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="box  col-md-4">
+      <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Make New Appointment</h3>
         </div>
@@ -206,7 +206,16 @@
     reserved.
   </footer>
 
-  <!-- /.control-sidebar -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+      </div><!-- /.tab-pane -->
+
+    </div>
+  </aside><!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>

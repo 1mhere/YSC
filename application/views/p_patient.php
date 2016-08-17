@@ -31,7 +31,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url()."assets"?>/index2.html" class="logo">
+    <a href="" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>Y</b>SC</span>
       <!-- logo for regular state and mobile devices -->
@@ -128,31 +128,37 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        My Appointment
-        <small>The appointment you made</small>
+        Edit Password
+        <small>To secure your account</small>
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="box  col-md-4">
+
+      <!-- Default box -->
+      <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">My Appointment</h3>
+          <h3 class="box-title">Edit Password</h3>
         </div>
-          <div class="form-group">
+        <!-- form start -->
+        <div class="form-group">
           <?php foreach ($data as $d) {
           ?>
-              <h5>Date : </h5>
-              <h2><?php echo $d['date']; ?></h2>
-              <h5>Slot : </h5>
-              <h2><?php echo $d['slot']; ?></h2>
-            <br>
-                <a href="<?php echo base_url()."index.php/patient/cancelApp/".$d['id'] ;?>" class="btn btn-default btn-flat">Cancel Appointment</a>
-                <?php
-                } ?>
-          </div>
+              <h5>&nbsp Date : </h5>
+              <h2>&nbsp <?php echo $d['date']; ?></h2>
+              <h5>&nbsp Slot : </h5>
+              <h2>&nbsp <?php echo $d['slot']; ?></h2>
+                <br>
+              &nbsp <a href="<?php echo base_url()."index.php/patient/cancelApp/".$d['id'] ;?>" class="btn btn-default btn-flat">Cancel Appointment</a>
+          <?php
+          } ?>
+          <h5>.</h5>
         </div>
-        
+
+        </div>
+        <!-- /.box -->
+
     </section>
     <!-- /.content -->
   </div>

@@ -21,6 +21,35 @@ class Auth extends CI_Controller {
       	$this->load->view('p_login');
 	}
 
+  public function login(){
+    $u = $this->input->post('username');
+		$p = md5($this->input->post('password'));
+
+    $cek_login = $this->db->get_where('user',array('username' => $u, 'password'=> $p));
+    if($cek_login->num_rows()>0){
+      $ambil = $cek_login->row();
+      if($u == $ambil->username && $p== $ambil->password){
+        $sess = array(
+            'username' => $ambil->username,
+            'email' => $ambil->email,
+            'phone' => $ambil->phone,
+            'status' => $ambil->status,
+
+          );
+        $this->session->set_userdata($sess);
+        if($ambil->status == 'doctor'){
+          redirect("doctor");
+        }else{
+          redirect("patient");
+        }
+      }else{
+        $this->session->set_flashdata('pesan','Username/password salah');
+      }
+    }else{
+      $this->session->set_flashdata('pesan','Username/password salah');
+    }
+  }
+
   public function logout(){
 		$cek= $this->session->userdata('username');
 		if(empty($cek))

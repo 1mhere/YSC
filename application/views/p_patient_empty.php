@@ -135,14 +135,14 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="box  col-md-4">
+      <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">My Appointment</h3>
         </div>
           <div class="form-group">
-            <h5>Nothing found</h5>
+            <h5>&nbsp Nothing found</h5>
             <br>
-                <a href="<?php echo base_url()."index.php/patient/app" ?>" class="btn btn-default btn-flat">Make New Appointment</a>
+                &nbsp&nbsp<a href="<?php echo base_url()."index.php/patient/app" ?>" class="btn btn-default btn-flat">Make New Appointment</a>
               <h5>.</h5>
           </div>
         </div>

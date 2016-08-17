@@ -135,7 +135,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="box  col-md-4">
+      <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">History</h3>
         </div>
@@ -161,7 +161,7 @@
           </table>
         </div>
         <!-- /.box-body -->
-        </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>
