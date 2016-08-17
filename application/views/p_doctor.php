@@ -173,7 +173,7 @@
                     <!-- /.input group -->
                   </div>
                 <!-- /.form group -->
-                  <?php echo $this->session->flashdata('pesan'); ?>
+                  <?php echo $this->session->flashdata('info'); ?>
               </div><!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" name="add" class="btn btn-default ">Choose Date</button>
@@ -289,8 +289,6 @@
 <script src="<?php echo base_url()."assets"?>/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="<?php echo base_url()."assets"?>/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="<?php echo base_url()."assets"?>/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- bootstrap time picker -->
-<script src="<?php echo base_url()."assets"?>/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- iCheck 1.0.1 -->
 <script src="<?php echo base_url()."assets"?>/plugins/iCheck/icheck.min.js"></script>
 
@@ -331,10 +329,6 @@
     });
 
 
-    //Timepicker
-    $(".timepicker").timepicker({
-      showInputs: false
-    });
   });
 </script>
 

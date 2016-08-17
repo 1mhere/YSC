@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </form>
 		<br>
-    <a href="<?php echo base_url()."index.php/auth" ?>" class="text-center">I already have an account</a>
+    <a href="<?php echo base_url()."index.php/auth/register" ?>" class="text-center">I don't have an account</a>
   </div>
   <!-- /.form-box -->
 </div>

@@ -16,8 +16,8 @@ class Doctor extends CI_Controller {
 
 	public function pass()
 	{
-		$cek= $this->session->userdata('username');
-		if($cek=='Doctor')
+		$cek= $this->session->userdata('status');
+		if($cek=='doctor')
 			$this->load->view('p_doctor_pass');
 		else
 			redirect("auth");
@@ -25,8 +25,8 @@ class Doctor extends CI_Controller {
 
 	public function list_uncheck()
 	{
-		$cek= $this->session->userdata('username');
-		if($cek=='Doctor'){
+		$cek= $this->session->userdata('status');
+		if($cek=='doctor'){
 				$data['data'] = $this->db_model->GetSlot(0);
 				$this->load->view('p_doctor_list_uncheck',$data);
 		}else
@@ -35,8 +35,8 @@ class Doctor extends CI_Controller {
 
 	public function list_check()
 	{
-		$cek= $this->session->userdata('username');
-		if($cek=='Doctor'){
+		$cek= $this->session->userdata('status');
+		if($cek=='doctor'){
 				$data['data'] = $this->db_model->GetSlot(1);
 				$this->load->view('p_doctor_list_check',$data);
 		}else
@@ -69,32 +69,39 @@ class Doctor extends CI_Controller {
 		public function addslot(){
 			$tgl = $_POST['tgl'];
 			$slot = $_POST['slot'];
-			$cek = $this->db->get_where('appointment',array('date' => $tgl , 'slot' => $slot));
-			if($cek->num_rows()==0){
-					$data_insert = array(
-							'date' => $tgl,
-							'slot' => $slot,
-							'checkin' => false,
-					);
-					$res = $this->db_model->InsertData('appointment',$data_insert);
-					if($res>0){
-						$this->session->set_flashdata('pesan','Add Slot Success');
-						redirect('doctor');
-					}else{
-						$this->session->set_flashdata('pesan','Add User Fail');
-						redirect('doctor');
-					}
-			}else {
-				$this->session->set_flashdata('pesan','Slot exist');
+
+			if ($tgl != "" ){
+				$cek = $this->db->get_where('appointment',array('date' => $tgl , 'slot' => $slot));
+				if($cek->num_rows()==0){
+						$data_insert = array(
+								'date' => $tgl,
+								'slot' => $slot,
+								'checkin' => false,
+						);
+						$res = $this->db_model->InsertData('appointment',$data_insert);
+						if($res>0){
+							$this->session->set_flashdata('pesan','Add Slot Success');
+							redirect('doctor');
+						}else{
+							$this->session->set_flashdata('pesan','Add Slot Fail');
+							redirect('doctor');
+						}
+				}else {
+					$this->session->set_flashdata('pesan','Slot exist');
+					redirect('doctor');
+				}
+			}else{
+				$this->session->set_flashdata('pesan','Invalid Input');
 				redirect('doctor');
 			}
+
 		}
 
 		public function do_delete($id){
 				$where = array('id' => $id);
 					$res= $this->db_model->DeleteData('appointment',$where);
 				if($res>=1){
-					$this->session->set_flashdata('pesan','Delete data sukses');
+					$this->session->set_flashdata('info','Delete data success');
 					redirect('doctor');
 				}
 		}
