@@ -6,12 +6,14 @@ class Patient extends CI_Controller {
 	public function index()
 	{
 		$cek= $this->session->userdata('status');
-		if($cek=='patient')
-			$this->load->view('p_patient');
+		$name= $this->session->userdata('username');
+		if($cek=='patient'){
+			$data['data'] = $this->db_model->GetPatientSlot($name);
+			$this->load->view('p_patient',$data);
+		}
 		else{
 			redirect("auth");
 		}
-
 	}
 
 	public function pass()
@@ -35,10 +37,12 @@ class Patient extends CI_Controller {
 	public function app()
 	{
 		$cek= $this->session->userdata('status');
-		if($cek=='patient')
-			$this->load->view('p_patient_app');
-		else
+		if($cek=='patient'){
+			$data['data'] = $this->db_model->GetUnbookedSlot();
+			$this->load->view('p_patient_app',$data);
+		}else{
 			redirect("auth");
+		}
 	}
 
 	//edit password
@@ -61,5 +65,35 @@ class Patient extends CI_Controller {
 				$this->session->set_flashdata('pesan','The Password Did not Match');
 				redirect('patient/pass');
 			}
+		}
+
+		public function GetSlot($where=""){
+			$data = $this->db->query('select * from appointment where booked=1 and checkin ='.$where);
+			return $data->result_array();
+		}
+
+//make an appointment
+		public function MakeApp($id){
+			$name = $this->session->userdata('username');
+	      $data_update = array(
+	  				'username' => $name,
+						'booked' => 1,
+	  			);
+	  		$where = array('id' => $id);
+	  		$res = $this->db_model->UpdateData('appointment',$data_update,$where);
+	  		if($res>=1){
+	  			$this->session->set_flashdata('pesan','Appointmern already created!');
+	  			redirect('patient');
+	  		}
+		}
+
+		//cancel appointment
+		public function CancelApp($id){
+				$where = array('id' => $id);
+					$res= $this->db_model->DeleteData('appointment',$where);
+				if($res>=1){
+					$this->session->set_flashdata('pesan','Appointment already cancelled');
+					redirect('patient/kosong');
+				}
 		}
 }

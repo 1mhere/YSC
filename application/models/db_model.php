@@ -51,6 +51,16 @@ class Db_model extends CI_Model {
 		return $data->result_array();
 	}
 
+	public function GetUnbookedSlot(){
+		$data = $this->db->query('select * from appointment where booked=0');
+		return $data->result_array();
+	}
+
+	public function GetPatientSlot($where=""){
+		$data = $this->db->query('select * from appointment where username = "'.$where.'"');
+		return $data->result_array();
+	}
+
 	public function GetAllSlot(){
 		$data = $this->db->query('select * from appointment');
 		return $data->result_array();

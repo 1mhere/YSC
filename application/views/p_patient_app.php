@@ -135,13 +135,6 @@
       <div class="box  col-md-4">
         <div class="box-header with-border">
           <h3 class="box-title">Make New Appointment</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="Choose" data-toggle="tooltip" title="Choose">
-              <i class="fa fa-times"></i></button>
-          </div>
         </div>
           <div class="form-group">
             <h5>  Date</h5>
@@ -163,34 +156,17 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <?php foreach ($data as $d) {
+                  ?>
                 <tr>
-                  <td>14/08/2016</td>
-                  <td>08.00</td>
+                  <td><?php echo $d['date']; ?></td>
+                  <td><?php echo $d['slot']; ?>0</td>
                   <td>
-                      <a href="<?php echo base_url()."index.php/patient" ?>" class="btn btn-default btn-flat">Choose</a>
+                      <a href="<?php echo base_url()."index.php/patient/Makeapp/".$d['id']; ?>" class="btn btn-default btn-flat">Choose</a>
                   </td>
                 </tr>
-                <tr>
-                  <td>14/08/2016</td>
-                  <td>08.15</td>
-                  <td>
-                      <a href="<?php echo base_url()."index.php/patient" ?>" class="btn btn-default btn-flat">Choose</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>14/08/2016</td>
-                  <td>08.30</td>
-                  <td>
-                      <a href="<?php echo base_url()."index.php/patient" ?>" class="btn btn-default btn-flat">Choose</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>14/08/2016</td>
-                  <td>08.45</td>
-                  <td>
-                      <a href="<?php echo base_url()."index.php/patient" ?>" class="btn btn-default btn-flat">Choose</a>
-                  </td>
-                </tr>
+                <?php
+                } ?>
                 </tbody>
               </table>
             </div>

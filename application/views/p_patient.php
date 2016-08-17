@@ -142,12 +142,16 @@
           </div>
         </div>
           <div class="form-group">
-            <h5>Date : </h5>
-            <h2>18/04/2016</h2>
-            <h5>Slot : </h5>
-            <h2>08.00</h2>
+          <?php foreach ($data as $d) {
+          ?>
+              <h5>Date : </h5>
+              <h2><?php echo $d['date']; ?></h2>
+              <h5>Slot : </h5>
+              <h2><?php echo $d['slot']; ?></h2>
+          <?php
+          } ?>
             <br>
-                <a href="<?php echo base_url()."index.php/patient/kosong" ?>" class="btn btn-default btn-flat">Cancel Appointment</a>
+                <a href="<?php echo base_url()."index.php/patient/cancelApp/".$d['id'] ?>" class="btn btn-default btn-flat">Cancel Appointment</a>
               <h5>.</h5>
           </div>
         </div>
