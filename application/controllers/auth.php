@@ -44,9 +44,11 @@ class Auth extends CI_Controller {
         }
       }else{
         $this->session->set_flashdata('pesan','Username/password salah');
+        $this->load->view('p_login');
       }
     }else{
       $this->session->set_flashdata('pesan','Username/password salah');
+      $this->load->view('p_login');
     }
   }
 

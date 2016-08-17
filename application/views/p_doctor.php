@@ -215,7 +215,7 @@
               <h3 class="box-title">Add a Slot</h3>
             </div>
             <!-- form start -->
-            <form class="form-horizontal" method="Post" action = "doctor/addslot">
+            <form class="form-horizontal" method="Post" action = "<?php echo base_url()."index.php/doctor/addslot" ?>">
               <div class="box-body">
                 <!-- Date -->
                   <div class="form-group">
