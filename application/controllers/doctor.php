@@ -6,8 +6,9 @@ class Doctor extends CI_Controller {
 	public function index()
 	{
 		$cek= $this->session->userdata('status');
+		$doc= $this->session->userdata('username');
 		if($cek=='doctor'){
-			$data['data'] = $this->db_model->GetAllSlot();
+			$data['data'] = $this->db_model->GetAllSlot($doc);
 			$this->load->view('p_doctor',$data);
 		}else{
 			redirect("auth");
@@ -26,8 +27,9 @@ class Doctor extends CI_Controller {
 	public function list_uncheck()
 	{
 		$cek= $this->session->userdata('status');
+		$doc= $this->session->userdata('username');
 		if($cek=='doctor'){
-				$data['data'] = $this->db_model->GetSlot(0);
+				$data['data'] = $this->db_model->GetSlot(0,$doc);
 				$this->load->view('p_doctor_list_uncheck',$data);
 		}else
 			redirect("auth");
@@ -36,8 +38,9 @@ class Doctor extends CI_Controller {
 	public function list_check()
 	{
 		$cek= $this->session->userdata('status');
+		$doc= $this->session->userdata('username');
 		if($cek=='doctor'){
-				$data['data'] = $this->db_model->GetSlot(1);
+				$data['data'] = $this->db_model->GetSlot(1,$doc);
 				$this->load->view('p_doctor_list_check',$data);
 		}else
 			redirect("auth");
@@ -76,6 +79,7 @@ class Doctor extends CI_Controller {
 						$data_insert = array(
 								'date' => $tgl,
 								'slot' => $slot,
+								'doctor' => $this->session->userdata('username'),
 								'checkin' => false,
 						);
 						$res = $this->db_model->InsertData('appointment',$data_insert);

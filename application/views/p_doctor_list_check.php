@@ -9,6 +9,10 @@
 
   <!-- header  -->
      <?php include 'header.php';?>
+
+     <!-- for calling process -->
+      <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+
   <!-- end of header -->
 
   <!-- =============================================== -->

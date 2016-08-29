@@ -40,6 +40,8 @@
         <div class="form-group">
           <?php foreach ($data as $d) {
           ?>
+              <h5>&nbsp Doctor : </h5>
+              <h2>&nbsp <?php echo $d['doctor']; ?></h2>
               <h5>&nbsp Date : </h5>
               <h2>&nbsp <?php echo $d['date']; ?></h2>
               <h5>&nbsp Slot : </h5>

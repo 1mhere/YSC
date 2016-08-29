@@ -39,11 +39,11 @@ class Patient extends CI_Controller {
 			redirect("auth");
 	}
 
-	public function app()
+	public function app($doc)
 	{
 		$cek= $this->session->userdata('status');
 		if($cek=='patient'){
-			$data['data'] = $this->db_model->GetUnbookedSlot();
+			$data['data'] = $this->db_model->GetUnbookedSlot($doc);
 			$this->load->view('p_patient_app',$data);
 		}else{
 			redirect("auth");
@@ -54,9 +54,34 @@ class Patient extends CI_Controller {
 	{
 		$tgl= $_POST['tgl'];
 		$cek= $this->session->userdata('status');
+
 		if($cek=='patient'){
 			$data['data'] = $this->db_model->GetDateSlot($tgl);
 			$this->load->view('p_patient_app',$data);
+		}else{
+			redirect("auth");
+		}
+	}
+
+	public function doctorExpList()
+	{
+		$exp= $_POST['expert'];
+		$cek= $this->session->userdata('status');
+
+		if($cek=='patient'){
+			$data['data'] = $this->db_model->GetDoctorExp($exp);
+			$this->load->view('p_patient_doctorlist',$data);
+		}else{
+			redirect("auth");
+		}
+	}
+
+	public function doctorList()
+	{
+		$cek= $this->session->userdata('status');
+		if($cek=='patient'){
+			$data['data'] = $this->db_model->GetDoctor();
+			$this->load->view('p_patient_doctorlist',$data);
 		}else{
 			redirect("auth");
 		}
@@ -95,7 +120,7 @@ class Patient extends CI_Controller {
 	  		$where = array('id' => $id);
 	  		$res = $this->db_model->UpdateData('appointment',$data_update,$where);
 	  		if($res>=1){
-	  			$this->session->set_flashdata('pesan','Appointmern already created!');
+	  			$this->session->set_flashdata('pesan','Appointment already created!');
 	  			redirect('patient');
 	  		}
 		}

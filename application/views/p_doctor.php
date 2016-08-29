@@ -108,7 +108,7 @@
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                            <input type="text" class="form-control pull-right" id="datepicker" name="tgl">
+                            <input type="text" class="form-control pull-right" id="datepicker2" name="tgl">
                         </div>
                         <br>
                         <label>Time:</label>
@@ -188,6 +188,10 @@
 
     //Date picker
     $('#datepicker').datepicker({
+      autoclose: true
+    });
+
+    $('#datepicker2').datepicker({
       autoclose: true
     });
 

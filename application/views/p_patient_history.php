@@ -41,6 +41,7 @@
             <tr>
               <th>Date</th>
               <th>Slot</th>
+              <th>Doctor</th>
             </tr>
             </thead>
             <tbody>
@@ -49,6 +50,7 @@
             <tr>
               <td><?php echo $d['date']; ?></td>
               <td><?php echo $d['slot']; ?></td>
+              <td><?php echo $d['doctor']; ?></td>
             </tr>
             <?php
             } ?>

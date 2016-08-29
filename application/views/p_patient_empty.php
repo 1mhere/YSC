@@ -37,7 +37,7 @@
           <div class="form-group">
             <h5>&nbsp Nothing found</h5>
             <br>
-                &nbsp&nbsp<a href="<?php echo base_url()."index.php/patient/app" ?>" class="btn btn-default btn-flat">Make New Appointment</a>
+                &nbsp&nbsp<a href="<?php echo base_url()."index.php/patient/doctorList" ?>" class="btn btn-default btn-flat">Make New Appointment</a>
               <h5>.</h5>
           </div>
         </div>

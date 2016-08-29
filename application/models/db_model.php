@@ -18,13 +18,13 @@ class Db_model extends CI_Model {
 		return $res;
 	}
 
-	public function GetSlot($where=""){
-		$data = $this->db->query('select * from appointment where username is not null and done=0 and checkin ='.$where.' order by skip,date,slot');
+	public function GetSlot($where="",$doc=""){
+		$data = $this->db->query('select * from appointment where username is not null and done=0 and checkin ='.$where.' and doctor = "'.$doc.'" order by skip,date,slot');
 		return $data->result_array();
 	}
 
-	public function GetUnbookedSlot(){
-		$data = $this->db->query('select * from appointment where username is NULL order by date,slot');
+	public function GetUnbookedSlot($doc){
+		$data = $this->db->query('select * from appointment where username is NULL and doctor = "'.$doc.'" order by date,slot');
 		return $data->result_array();
 	}
 
@@ -34,13 +34,23 @@ class Db_model extends CI_Model {
 		return $data->result_array();
 	}
 
+	public function GetDoctor(){
+		$data = $this->db->query('select * from userp where status = "doctor" order by expertise');
+		return $data->result_array();
+	}
+
+	public function GetDoctorExp($exp){
+		$data = $this->db->query('select * from userp where status = "doctor" and expertise = "'.$exp.'" ');
+		return $data->result_array();
+	}
+
 	public function GetPatientSlot($where=""){
 		$data = $this->db->query('select * from appointment where username = "'.$where.'" and done = 0');
 		return $data->result_array();
 	}
 
-	public function GetAllSlot(){
-		$data = $this->db->query('select * from appointment order by date asc, slot asc');
+	public function GetAllSlot($doc=""){
+		$data = $this->db->query('select * from appointment where doctor = "'.$doc.'" order by date asc, slot asc');
 		return $data->result_array();
 	}
 
