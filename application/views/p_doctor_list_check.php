@@ -18,6 +18,9 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url()."assets"?>/dist/css/skins/_all-skins.min.css">
 
+  <!-- Calling script : text to speech -->
+  <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -147,7 +150,12 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Patient List</h3>
+              <!-- <h3 class="box-title">Calling Process</h3> -->
+              <!-- <a href="" class="btn btn-default btn-flat pull-right"  onclick="berhenti();">End</a>
+              <a href="" class="btn btn-default btn-flat pull-right" onclick="panggil('1mhere');">Begin</a> -->
+              <p>Click <b>Call</b> to Call Patient.</p>
+              <p>Click <b>Not Show</b> if patient not show to the medcheck room after calling limit exceeded.</p>
+              <p>Click <b>Done</b> if patient has already come to medcheck room.</p>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -157,7 +165,7 @@
                   <th>Date</th>
                   <th>Slot</th>
                   <th>Name</th>
-                  <th>Number of Skip</th>
+                  <!-- <th>Number of Skip</th> -->
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -168,10 +176,11 @@
                   <td><?php echo $d['date']; ?></td>
                   <td><?php echo $d['slot']; ?></td>
                   <td><?php echo $d['username']; ?></td>
-                    <td><?php echo $d['skip']; ?></td>
+                    <!-- <td><?php echo $d['skip']; ?></td> -->
                   <td>
-                    <a href="<?php echo base_url()."index.php/doctor/not_show/".$d['id']; ?>" class="btn btn-default btn-flat">Not Show</a>
-                    <a href="<?php echo base_url()."index.php/doctor/done/".$d['id']; ?>" class="btn btn-default btn-flat">Done</a>
+                    <a class="btn btn-default btn-flat" onclick="panggil('<?php echo $d['username']; ?>');">Call</a>
+                    <a href="<?php echo base_url()."index.php/doctor/not_show/".$d['id']; ?>" class="btn btn-default btn-flat" onclick="berhenti();">Not Show</a>
+                    <a href="<?php echo base_url()."index.php/doctor/done/".$d['id']; ?>" class="btn btn-default btn-flat" onclick="berhenti();">Done</a>
                   </td>
                 </tr>
                 <?php
@@ -217,5 +226,30 @@
 <script src="<?php echo base_url()."assets"?>/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url()."assets"?>/dist/js/demo.js"></script>
+
+
+<script>
+  // function sleep(milliseconds) {
+  //   var start = new Date().getTime();
+  //   for (var i = 0; i < 1e7; i++) {
+  //     if ((new Date().getTime() - start) > milliseconds){
+  //       break;
+  //     }
+  //   }
+  // }
+  function panggil(n){
+      responsiveVoice.cancel();
+      for (var i = 0; i < 5; i++) {
+          responsiveVoice.speak("Kepada pasien atas nama "+n+" untuk masuk ruangan pemeriksaan", "Indonesian Female" );
+      }
+  }
+  function berhenti(){
+      responsiveVoice.cancel();
+  }
+
+</script>
+
+
+
 </body>
 </html>

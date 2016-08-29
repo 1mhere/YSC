@@ -176,6 +176,7 @@
                   <?php echo $this->session->flashdata('info'); ?>
               </div><!-- /.box-body -->
               <div class="box-footer">
+                <p>Click "Choose Date" to show available slot in chosen date.</p>
                 <button type="submit" name="add" class="btn btn-default ">Choose Date</button>
               </div><!-- /.box-footer -->
             </form>
