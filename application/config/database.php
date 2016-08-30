@@ -75,9 +75,16 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	// offline
+	// 'hostname' => 'localhost',
+	// 'username' => 'root',
+	// 'password' => '',
+	//end online
+	//online azure
+	'hostname' => 'ap-cdbr-azure-east-c.cloudapp.net',
+	'username' => 'b88185b8b06f5d',
+	'password' => '897cd5bf',
+	//end online azure
 	'database' => 'easyorder',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

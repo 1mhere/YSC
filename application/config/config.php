@@ -23,7 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8090/patientApp/';
+// offline
+// $config['base_url'] = 'http://localhost:8090/patientApp/';
+//online
+$config['base_url'] = 'http://yscapp.azurewebsites.net/';
 
 /*
 |--------------------------------------------------------------------------
