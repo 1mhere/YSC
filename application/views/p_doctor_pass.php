@@ -44,7 +44,7 @@
           </div>
         </div>
         <!-- form start -->
-          <form class="form-horizontal" method="Post" action = "<?php echo base_url()."index.php/doctor/do_update" ?> ">
+          <form class="form-horizontal" method="Post" action="<?php echo base_url()."index.php/doctor/do_update" ?>">
             <div class="box-body">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">New Password</label>
@@ -55,15 +55,15 @@
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Confirm Password</label>
                 <div class="col-sm-10">
-                  <input type="password" class="form-control" name="confirm" placeholder="Current Password">
+                  <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
                 </div>
               </div>
-                  	<?php echo "<alert>".$this->session->flashdata('pesan')."</alert>"; ?>
+
+              <?php echo $this->session->flashdata('pesan'); ?>
                </div><!-- /.box-body -->
             <div class="box-footer">
-
-              <button type="reset" class="btn btn-default">Cancel</button>
-              <button type="submit" name="edit" class="btn btn-info pull-right">Save</button>
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" name="edit" class="btn btn-primary pull-right">Save</button>
             </div><!-- /.box-footer -->
           </form>
 

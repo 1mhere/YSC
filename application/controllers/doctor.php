@@ -15,11 +15,56 @@ class Doctor extends CI_Controller {
 		}
 	}
 
+	public function do_insert(){
+		$name = $_POST['username'];
+		$email = $_POST['email'];
+		$phone = $_POST['phone'];
+    $password = $_POST['password'];
+    $exp = $_POST['exp'];
+    if($name != "" and $password != ""){
+      $cek_login = $this->db->get_where('userp',array('username' => $name));
+      if($cek_login->num_rows()==0){
+          $data_insert = array(
+              'username' => $name,
+              'email' => $email,
+              'phone' => $phone,
+              'password' => md5($password),
+              'status' => 'doctor',
+							'expertise' => $exp,
+          );
+          $res = $this->db_model->InsertData('userp',$data_insert);
+          if($res>0){
+            $this->session->set_userdata($data_insert);
+            $this->session->set_flashdata('pesan','Add User Success');
+            redirect('patient/kosong');
+          }else{
+            $this->session->set_flashdata('pesan','Add User Fail');
+            redirect('auth/register_doctor');
+          }
+      }else {
+        $this->session->set_flashdata('pesan','Username exist');
+        redirect('auth/register_doctor');
+      }
+    }else{
+      $this->session->set_flashdata('pesan','Invalid input');
+      redirect('auth/register_doctor');
+    }
+	}
+
 	public function pass()
 	{
 		$cek= $this->session->userdata('status');
 		if($cek=='doctor')
 			$this->load->view('p_doctor_pass');
+		else
+			redirect("auth");
+	}
+
+	public function instruction()
+	{
+		$cek= $this->session->userdata('status');
+		if($cek=='doctor')
+			$this->load->view('p_doctor_instruction');
 		else
 			redirect("auth");
 	}
@@ -47,25 +92,30 @@ class Doctor extends CI_Controller {
 	}
 
 	//edit password
-	  public function do_update(){
-		  $username= $this->session->userdata('username');
-			$newpass= $_POST['newpass'];
+		public function do_update(){
+			$username= $this->session->userdata('username');
+			$newpass = $_POST['newpass'];
 			$confirm = $_POST['confirm'];
 
-	    if($newpass == $confirm){
-	      $data_update = array(
-	  				'password' => md5($newpass)
-	  			);
-	  		$where = array('username' => $username);
-	  		$res = $this->db_model->UpdateData('userp',$data_update,$where);
-	  		if($res>=1){
-	  			$this->session->set_flashdata('pesan','Change Password Success');
-	  			redirect('auth');
-	  		}
-	    }else{
-				$this->session->set_flashdata('pesan','The Password Did not Match');
-	      redirect('doctor/pass');
-	    }
+			if($newpass != ""){
+				if($newpass == $confirm){
+					$data_update = array(
+							'password' => md5($newpass)
+						);
+					$where = array('username' => $username);
+					$res = $this->db_model->UpdateData('userp',$data_update,$where);
+					if($res>=1){
+						$this->session->set_flashdata('pesan','Change Password Success');
+						redirect('doctor/pass');
+					}
+				}else{
+					$this->session->set_flashdata('pesan','Failed : The Password Did not Match');
+					redirect('doctor/pass');
+				}
+			}else{
+				$this->session->set_flashdata('pesan','Failed : The Password cannot be empty');
+				redirect('doctor/pass');
+			}
 		}
 
 		//add slot
@@ -167,8 +217,9 @@ class Doctor extends CI_Controller {
 		{
 			$tgl= $_POST['tgl'];
 			$cek= $this->session->userdata('status');
+			$doc= $this->session->userdata('username');
 			if($cek=='doctor'){
-				$data['data'] = $this->db_model->GetAllSlotDate($tgl);
+				$data['data'] = $this->db_model->GetAllSlotDate($tgl,$doc);
 				$this->load->view('p_doctor',$data);
 			}else{
 				redirect("auth");

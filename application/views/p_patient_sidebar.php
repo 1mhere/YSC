@@ -29,6 +29,11 @@
           <i class="fa fa-th"></i> <span>Edit Password</span>
         </a>
       </li>
+      <li>
+        <a href="<?php echo base_url()."index.php/patient/instruction" ?>">
+          <i class="fa fa-book"></i> <span>Instruction</span>
+        </a>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->

@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="register-box-body">
     <p class="login-box-msg">Register a new account</p>
 
-    <form action="<?php echo base_url()."index.php/auth/do_insert" ?>" method="post">
+    <form action="<?php echo base_url()."index.php/doctor/do_insert" ?>" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Username" name="username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -27,12 +27,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Phone" name="phone">
-        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        <input type="tel" class="form-control" placeholder="Phone" name="phone">
+        <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
       </div>
 			<div class="form-group has-feedback">
 				<input type="password" class="form-control" placeholder="Password" name="password">
 				<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback">
+				<select class="form-control" name="exp" >
+					<option>anak</option>
+					<option>gigi</option>
+          <option>mata</option>
+				</select>
+					<span class="glyphicon glyphicon-list-alt form-control-feedback"></span>
 			</div>
 						<?php echo "<alert>".$this->session->flashdata('pesan')."</alert>"; ?>
       <div class="row">

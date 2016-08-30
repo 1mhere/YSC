@@ -29,8 +29,8 @@ class Db_model extends CI_Model {
 	}
 
 //get unbooked slot by date
-	public function GetDateSlot($tgl=""){
-		$data = $this->db->query('select * from appointment where username is NULL and date="'.$tgl.'" order by date,slot');
+	public function GetDateSlot($tgl="",$doc=""){
+		$data = $this->db->query('select * from appointment where username is NULL and date="'.$tgl.'" and doctor="'.$doc.'" order by date,slot');
 		return $data->result_array();
 	}
 
@@ -54,8 +54,8 @@ class Db_model extends CI_Model {
 		return $data->result_array();
 	}
 
-	public function GetAllSlotDate($tgl=""){
-		$data = $this->db->query('select * from appointment where date="'.$tgl.'" order by date,slot');
+	public function GetAllSlotDate($tgl="",$doc=""){
+		$data = $this->db->query('select * from appointment where date="'.$tgl.'" and doctor="'.$doc.'" order by date,slot');
 		return $data->result_array();
 	}
 

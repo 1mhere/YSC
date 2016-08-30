@@ -51,11 +51,19 @@
                       </div>
                     <!-- /.input group -->
                   </div>
+                  <ul>
+                    <li>Choose a date from the input and click <b>Choose Date</b> to show just the chosen date appointment slot.</li>
+                    <li>Click <b>Back</b> if you want to change the doctor.</li>
+                    <li>Click <b>Show All</b> to show all appointment slot.</li>
+                  </ul>
+                  <br>
                 <!-- /.form group -->
                   <?php echo $this->session->flashdata('pesan'); ?>
               </div><!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" name="add" class="btn btn-default ">Choose Date</button>
+                <button type="submit" name="add" class="btn btn-primary">Choose Date</button>
+                <a href="<?php echo base_url()."index.php/patient/doctorList" ?>" class="btn btn-primary btn-flat">Back</a>
+                <a href="<?php echo base_url()."index.php/patient/showAllDateChosenDoc" ?>" class="btn btn-primary btn-flat">Show All</a>
               </div><!-- /.box-footer -->
             </form>
 
@@ -75,7 +83,7 @@
                   <td><?php echo $d['date']; ?></td>
                   <td><?php echo $d['slot']; ?>0</td>
                   <td>
-                      <a href="<?php echo base_url()."index.php/patient/Makeapp/".$d['id']; ?>" class="btn btn-default btn-flat">Choose</a>
+                      <a href="" data-toggle="modal" data-target= "#modalApp" class="btn btn-default btn-flat">Choose</a>
                   </td>
                 </tr>
                 <?php
@@ -175,4 +183,36 @@
 </script>
 
 </body>
+<!--modal-->
+  <div class="modal fade modal modal-primary" data-backdrop="" id="modalApp" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">YSC App</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="list-group">
+                <h4>Appointment has been made.</h4>
+                <h5>Doctor : <?php echo $this->session->userdata('doctor'); ?></h5>
+                <h5>Date : <?php echo $d['date']; ?><h5>
+                <h5>Time : <?php echo $d['slot']; ?><h5>
+                <p>Are you sure?</p>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <form>
+            <a href="" data-dismiss="modal" class="btn btn-outline pull-left">No</a>
+            <a href="<?php echo base_url()."index.php/patient/Makeapp/".$d['id']; ?>" class="btn btn-outline">Yes</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </html>

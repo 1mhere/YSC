@@ -41,7 +41,11 @@
                   <div class="form-group">
                     <div class="col-sm-12">
                         <label>Expertise:</label>
-                          <input type="text" class="form-control" placeholder="Expertise" name="expert">
+                          <select class="form-control" name="exp" >
+                            <option>anak</option>
+                            <option>gigi</option>
+                            <option>mata</option>
+                          </select>
                     </div>
                     <!-- /.input group -->
                   </div>
@@ -49,7 +53,8 @@
                   <?php echo $this->session->flashdata('pesan'); ?>
               </div><!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" name="add" class="btn btn-default ">Choose Expertise</button>
+                <button type="submit" name="add" class="btn btn-primary ">Choose Expertise</button>
+                <a href="<?php echo base_url()."index.php/patient/doctorList" ?>" class="btn btn-primary btn-flat">Show All Doctor</a>
               </div><!-- /.box-footer -->
             </form>
 
@@ -69,7 +74,7 @@
                   <td><?php echo $d['username']; ?></td>
                   <td><?php echo $d['expertise']; ?></td>
                   <td>
-                      <a href="<?php echo base_url()."index.php/patient/app/".$d['username']; ?>" class="btn btn-default btn-flat">Choose</a>
+                      <a href="<?php echo base_url()."index.php/patient/setDoc/".$d['username']; ?>" class="btn btn-default btn-flat">Choose</a>
                   </td>
                 </tr>
                 <?php

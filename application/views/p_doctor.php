@@ -58,8 +58,13 @@
                   <?php echo $this->session->flashdata('info'); ?>
               </div><!-- /.box-body -->
               <div class="box-footer">
-                <p>Click "Choose Date" to show available slot in chosen date.</p>
-                <button type="submit" name="add" class="btn btn-default ">Choose Date</button>
+              <ul>
+                <li>Choose a date from the input and click <b>Choose Date</b> to show just the chosen date appointment slot.</li>
+                <li>Click <b>Show All</b> to show all appointment slot.</li>
+              </ul>
+              <br>
+                <button type="submit" name="add" class="btn btn-primary ">Choose Date</button>
+                <a href="<?php echo base_url()."index.php/doctor" ?>" class="btn btn-primary btn-flat">Show All</a>
               </div><!-- /.box-footer -->
             </form>
 
@@ -79,7 +84,7 @@
                   <td><?php echo $d['date']; ?></td>
                   <td><?php echo $d['slot']; ?>0</td>
                   <td>
-                      <a href="<?php echo base_url()."index.php/doctor/do_delete/".$d['id']; ?>" class="btn btn-default btn-flat">Remove</a>
+                      <a href="<?php echo base_url()."index.php/doctor/do_delete/".$d['id']; ?>" class="btn btn-danger btn-flat">Remove</a>
                   </td>
                 </tr>
                 <?php
@@ -126,7 +131,7 @@
               </div><!-- /.box-body -->
               <div class="box-footer">
                 <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" name="add" class="btn btn-info pull-right">Add</button>
+                <button type="submit" name="add" class="btn btn-primary pull-right">Add</button>
               </div><!-- /.box-footer -->
             </form>
           </div>

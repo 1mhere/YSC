@@ -33,8 +33,8 @@ class Auth extends CI_Controller {
             'username' => $ambil->username,
             'email' => $ambil->email,
             'phone' => $ambil->phone,
+            'password' => $ambil->password,
             'status' => $ambil->status,
-
           );
         $this->session->set_userdata($sess);
         if($ambil->status == 'doctor'){
@@ -62,43 +62,14 @@ class Auth extends CI_Controller {
 		}
 	}
 
-  public function register()
+  public function register_patient()
   {
-        $this->load->view('p_register');
+        $this->load->view('p_register_patient');
   }
 
-  public function do_insert(){
-		$name = $_POST['username'];
-		$email = $_POST['email'];
-		$phone = $_POST['phone'];
-    $password = $_POST['password'];
-    if($name != "" and $password != ""){
-      $cek_login = $this->db->get_where('userp',array('username' => $name));
-      if($cek_login->num_rows()==0){
-          $data_insert = array(
-              'username' => $name,
-              'email' => $email,
-              'phone' => $phone,
-              'password' => md5($password),
-              'status' => 'patient'
-          );
-          $res = $this->db_model->InsertData('userp',$data_insert);
-          if($res>0){
-            $this->session->set_userdata($data_insert);
-            $this->session->set_flashdata('pesan','Add User Success');
-            redirect('patient/kosong');
-          }else{
-            $this->session->set_flashdata('pesan','Add User Fail');
-            redirect('auth/register');
-          }
-      }else {
-        $this->session->set_flashdata('pesan','Username exist');
-        redirect('auth/register');
-      }
-    }else{
-      $this->session->set_flashdata('pesan','Invalid input');
-      redirect('auth/register');
-    }
-	}
+  public function register_doctor()
+  {
+        $this->load->view('p_register_doctor');
+  }
 
 }

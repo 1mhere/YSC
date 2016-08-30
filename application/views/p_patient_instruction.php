@@ -23,8 +23,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Edit Password
-        <small>To secure your account</small>
+        Instruction
+        <small>To help you use this app</small>
       </h1>
     </section>
 
@@ -34,25 +34,29 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Edit Password</h3>
-        </div>
-        <!-- form start -->
-        <div class="form-group">
-          <?php foreach ($data as $d) {
-          ?>
-              <h5>&nbsp Doctor : </h5>
-              <h2>&nbsp <?php echo $d['doctor']; ?></h2>
-              <h5>&nbsp Date : </h5>
-              <h2>&nbsp <?php echo $d['date']; ?></h2>
-              <h5>&nbsp Slot : </h5>
-              <h2>&nbsp <?php echo $d['slot']; ?></h2>
-                <br>
-              &nbsp <a href="<?php echo base_url()."index.php/patient/cancelApp/".$d['id'] ;?>" class="btn btn-danger btn-flat">Cancel Appointment</a>
-          <?php
-          } ?>
-          <h5>.</h5>
-        </div>
+          <h3 class="box-title">Pendaftaran Slot Appointment</h3>
 
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
+          <ol>
+            <li>Patient login menggunakan username dan passwordnya.</li>
+            <li>Patient diarahkan ke halaman yang menampilkan current appointment, jika tidak ada, maka akan tersedia tombol untuk membuat appointment baru.</li>
+            <li>Patient diarahkan ke halaman yang memunculkan semua daftar doctor yang telah terdaftar. Untuk melihat berdasarkan keahliannya, pilih salah satu keahlian dari daftar lalu klik “Choose Expertise”.</li>
+            <li>Patient diarahkan ke halaman yang memunculkan semua slot yang tersedia dari doctor yang telah dipilih untuk pemeriksaan.</li>
+            <li>	PIlih tanggal yang dicari lalu klik tombol “Choose date” untuk menampilkan hanya slot tersedia pada tangal itu.</li>
+            <li>Pilih slot yang tersedia dengan mengeklik tombol “Choose” di sebelah kanan slot yang akan dipilih.</li>
+            <li>Patient diarahkan ke halaman yang menampilkan appointment yang baru saja dibuat, tersedia tombol untuk membatalkan appointment.</li>
+
+          </ol>
+        </div>
+        <div class="box-footer">
+        </div><!-- /.box-footer -->
         </div>
         <!-- /.box -->
 

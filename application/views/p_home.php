@@ -75,7 +75,7 @@
                     <div class="intro-text">
                         <span class="name">YSC</span>
                         <hr class="star-light">
-                        <span class="skills">YSC brief Description</span>
+                        <span class="skills">Make your medcheck time more effective</span>
                     </div>
                 </div>
             </div>
@@ -95,10 +95,19 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>Long Description for this App</p>
+                    <p>
+                      YSC app is an application to help user in managing appointment between user and doctor.
+                      With this application, time that we used to wait in the doctor, can be use for another importance things.
+                      The hospitals and doctors can use this application to lighten the job of doctor’s assistance,
+                      so they don’t have to be busy to call the patient because the application can call the patient automatically
+                      and it can overcome if the patient are late or cancel the appointment.
+                    </p>
                 </div>
                 <div class="col-lg-4">
-                    <p>Include the positive affects and many more.</p>
+                  <p>
+                    This application can taught Indonesian people to be more on time and keep their promise,
+                    because we think Indonesian people’s ability to be on time is very low and it’s very damaged for the people who queue after them.
+                  </p>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <a href="#" class="btn btn-lg btn-outline">
@@ -122,8 +131,11 @@
                     <br>
                     <br>
                     <h5>-OR-</h5>
-                    <a href="<?php echo base_url()."index.php/auth/register" ?>" class="btn btn-lg btn-outline">
-                        Sign Up
+                    <a href="<?php echo base_url()."index.php/auth/register_patient" ?>" class="btn btn-lg btn-outline">
+                        Sign Up as a Patient
+                    </a>
+                    <a href="<?php echo base_url()."index.php/auth/register_doctor" ?>" class="btn btn-lg btn-outline">
+                        Sign Up as a Doctor
                     </a>
                 </div>
             </div>
@@ -146,7 +158,7 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>About YSC</h3>
-                        <p>Ysc brief Description</p>
+                        <p>YSC app is an application to help user in managing appointment between user and doctor. Its make your medcheck time more effective</p>
                     </div>
                 </div>
             </div>
