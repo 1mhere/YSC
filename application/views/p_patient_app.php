@@ -8,7 +8,7 @@
 <div class="wrapper">
 
   <!-- header  -->
-     <?php include 'header.php';?>
+     <?php include 'p_patient_header.php';?>
   <!-- end of header -->
 
   <!-- =============================================== -->
@@ -191,7 +191,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title">YSC App</h4>
+          <h4 class="modal-title"><b>Let's</b>Queue Here App</h4>
         </div>
         <div class="modal-body">
           <div class="row">

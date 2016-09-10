@@ -168,7 +168,7 @@ class Patient extends CI_Controller {
 					$res = $this->db_model->UpdateData('userp',$data_update,$where);
 					if($res>=1){
 						$this->session->set_flashdata('pesan','Change Password Success');
-						redirect('auth');
+						redirect('patient/pass');
 					}
 				}else{
 					$this->session->set_flashdata('pesan','Failed : The Password Did not Match');

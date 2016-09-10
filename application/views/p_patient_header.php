@@ -2,9 +2,9 @@
   <!-- Logo -->
   <a href="<?php echo base_url()."assets"?>/index2.html" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><b>L</b>QH</span>
+    <span class="logo-mini"><b>Y</b>SC</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>Let's</b>Queue Here</span>
+    <span class="logo-lg"><b>YSC</b>app</span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top">
@@ -23,7 +23,7 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-            <img src="<?php echo base_url()."assets"?>/dist/img/avatar5.png" class="user-image" alt="User Image">
+            <img src="<?php echo base_url()."assets"?>/dist/img/avatar04.png" class="user-image" alt="User Image">
             <span class="hidden-xs"><?php echo $this->session->userdata('username'); ?></span>
           </a>
           <ul class="dropdown-menu">
@@ -33,7 +33,7 @@
 
               <p>
                 <?php echo $this->session->userdata('username'); ?> - <?php echo $this->session->userdata('status'); ?>
-                <small>User of Ysc App 2016</small>
+                <small>User of LQH App 2016</small>
               </p>
             </li>
             <!-- Menu Body -->

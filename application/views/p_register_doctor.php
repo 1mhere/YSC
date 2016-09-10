@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>YSC | Register Page</title>
+	<title>LQH | Register Page</title>
 	<link rel="stylesheet" href="<?php echo base_url()."assets/bootstrap/css/bootstrap.css" ?>" type="text/css" />
 	<link rel="stylesheet" href="<?php echo base_url()."assets/dist/css/AdminLTE.min.css"; ?>" type="text/css" >
 
@@ -12,11 +12,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="<?php echo base_url() ?>" <b>YSC</b> app</a>
+    <a href="<?php echo base_url() ?>" <b>LQH</b> app</a>
   </div>
   <div class="register-box-body">
     <p class="login-box-msg">Register a new account</p>
 
+		<?php echo validation_errors(); ?>
     <form action="<?php echo base_url()."index.php/doctor/do_insert" ?>" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Username" name="username">
@@ -27,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="tel" class="form-control" placeholder="Phone" name="phone">
+        <input type="number" class="form-control" placeholder="Phone" name="phone">
         <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
       </div>
 			<div class="form-group has-feedback">

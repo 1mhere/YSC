@@ -8,7 +8,7 @@
 <div class="wrapper">
 
   <!-- header  -->
-     <?php include 'header.php';?>
+     <?php include 'p_doctor_header.php';?>
 
      <!-- for calling process -->
       <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
@@ -135,7 +135,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title">YSC App</h4>
+          <h4 class="modal-title"><b>Let's</b>Queue Here App</h4>
         </div>
         <div class="modal-body">
           <div class="row">

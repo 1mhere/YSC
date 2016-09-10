@@ -33,7 +33,7 @@
 
               <p>
                 <?php echo $this->session->userdata('username'); ?> - <?php echo $this->session->userdata('status'); ?>
-                <small>User of Ysc App 2016</small>
+                <small>User of LQH App 2016</small>
               </p>
             </li>
             <!-- Menu Body -->

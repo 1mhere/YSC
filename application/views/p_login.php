@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>YSC | Login Page</title>
+	<title>LQH | Login Page</title>
 	<link rel="stylesheet" href="<?php echo base_url()."assets/bootstrap/css/bootstrap.css" ?>" type="text/css" />
 	<link rel="stylesheet" href="<?php echo base_url()."assets/dist/css/AdminLTE.min.css"; ?>" type="text/css" >
 
@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="<?php echo base_url() ?>" <b>YSC</b> app</a>
+    <a href="<?php echo base_url() ?>" <b>LQH</b> app</a>
   </div>
   <div class="register-box-body">
     <p class="login-box-msg">Login to your account</p>

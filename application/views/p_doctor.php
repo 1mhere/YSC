@@ -8,7 +8,7 @@
 <div class="wrapper">
 
   <!-- header  -->
-     <?php include 'header.php';?>
+     <?php include 'p_doctor_header.php';?>
   <!-- end of header -->
 
   <!-- =============================================== -->

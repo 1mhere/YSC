@@ -7,8 +7,8 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 
-  <!-- header  -->
-     <?php include 'header.php';?>
+  <!-- p_patient_header  -->
+     <?php include 'p_patient_header.php';?>
   <!-- end of header -->
 
   <!-- =============================================== -->
