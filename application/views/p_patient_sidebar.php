@@ -4,11 +4,11 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="<?php echo base_url()."assets"?>/dist/img/avatar5.png" class="img-circle" alt="User Image">
+        <img src="<?php echo base_url()."assets"?>/dist/img/avatar04.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p><?php echo $this->session->userdata('username'); ?></p>
-        <a><?php echo $this->session->userdata('status'); ?></a>
+        <a>as <?php echo $this->session->userdata('status'); ?></a>
       </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -26,12 +26,12 @@
       </li>
       <li>
         <a href="<?php echo base_url()."index.php/patient/pass" ?>">
-          <i class="fa fa-th"></i> <span>Edit Password</span>
+          <i class="fa fa-th"></i> <span>Change Password</span>
         </a>
       </li>
       <li>
         <a href="<?php echo base_url()."index.php/patient/instruction" ?>">
-          <i class="fa fa-book"></i> <span>Instruction</span>
+          <i class="fa fa-book"></i> <span>Help</span>
         </a>
       </li>
     </ul>

@@ -73,8 +73,9 @@ class Doctor extends CI_Controller {
 	{
 		$cek= $this->session->userdata('status');
 		$doc= $this->session->userdata('username');
+		$now= date('m/d/20y');
 		if($cek=='doctor'){
-				$data['data'] = $this->db_model->GetSlot(0,$doc);
+				$data['data'] = $this->db_model->GetSlot(0,$doc,$now);
 				$this->load->view('p_doctor_list_uncheck',$data);
 		}else
 			redirect("auth");
@@ -84,8 +85,9 @@ class Doctor extends CI_Controller {
 	{
 		$cek= $this->session->userdata('status');
 		$doc= $this->session->userdata('username');
+		$now= date('m/d/20y');
 		if($cek=='doctor'){
-				$data['data'] = $this->db_model->GetSlot(1,$doc);
+				$data['data'] = $this->db_model->GetSlot(1,$doc,$now);
 				$this->load->view('p_doctor_list_check',$data);
 		}else
 			redirect("auth");
@@ -122,14 +124,15 @@ class Doctor extends CI_Controller {
 		public function addslot(){
 			$tgl = $_POST['tgl'];
 			$slot = $_POST['slot'];
+			$usr = $this->session->userdata('username');
 
 			if ($tgl != "" ){
-				$cek = $this->db->get_where('appointment',array('date' => $tgl , 'slot' => $slot));
+				$cek = $this->db->get_where('appointment',array('date' => $tgl , 'slot' => $slot, 'doctor' => $usr));
 				if($cek->num_rows()==0){
 						$data_insert = array(
 								'date' => $tgl,
 								'slot' => $slot,
-								'doctor' => $this->session->userdata('username'),
+								'doctor' => $usr,
 								'checkin' => false,
 						);
 						$res = $this->db_model->InsertData('appointment',$data_insert);
@@ -187,9 +190,12 @@ class Doctor extends CI_Controller {
 	  		}
 		}
 
-		public function check_in($id){
+		public function check_in($id,$selisih){
+			// $selisih = SelisihWaktu($jadwal, $datang);
+			// $selisih =2;
 	      $data_update = array(
-	  				'checkin' => 1
+	  				'checkin' => 1,
+						'late' => $selisih,
 	  			);
 	  		$where = array('id' => $id);
 	  		$res = $this->db_model->UpdateData('appointment',$data_update,$where);
@@ -198,6 +204,7 @@ class Doctor extends CI_Controller {
 	  			redirect('doctor/list_uncheck');
 	  		}
 		}
+
 
 		public function skip($id){
 				$cek = $this->db->get_where('appointment',array('id' => $id));

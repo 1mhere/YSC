@@ -29,7 +29,7 @@
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="<?php echo base_url()."assets"?>/dist/img/avatar5.png" class="img-circle" alt="User Image">
+              <img src="<?php echo base_url()."assets"?>/dist/img/avatar04.png" class="img-circle" alt="User Image">
 
               <p>
                 <?php echo $this->session->userdata('username'); ?> - <?php echo $this->session->userdata('status'); ?>

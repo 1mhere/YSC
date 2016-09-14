@@ -23,7 +23,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Available Slot
+        Time Slot Registration
         <small>for patient's appointment</small>
       </h1>
     </section>
@@ -31,72 +31,6 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-6">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Available Slot</h3>
-            </div>
-            <!-- /.box-header -->
-
-            <!-- form start -->
-            <form class="form-horizontal" method="Post" action = "<?php echo base_url()."index.php/doctor/appdate" ?>" >
-              <div class="box-body">
-                <!-- Date -->
-                  <div class="form-group">
-                    <div class="col-sm-12">
-                        <label>Date:</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                            <input type="text" class="form-control pull-right" id="datepicker" name="tgl">
-                        </div>
-                      </div>
-                    <!-- /.input group -->
-                  </div>
-                <!-- /.form group -->
-                  <?php echo $this->session->flashdata('info'); ?>
-              </div><!-- /.box-body -->
-              <div class="box-footer">
-              <ul>
-                <li>Choose a date from the input and click <b>Choose Date</b> to show just the chosen date appointment slot.</li>
-                <li>Click <b>Show All</b> to show all appointment slot.</li>
-              </ul>
-              <br>
-                <button type="submit" name="add" class="btn btn-primary ">Choose Date</button>
-                <a href="<?php echo base_url()."index.php/doctor" ?>" class="btn btn-primary btn-flat">Show All</a>
-              </div><!-- /.box-footer -->
-            </form>
-
-            <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover col-sm-4">
-                <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Slot</th>
-                  <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($data as $d) {
-              		?>
-                <tr>
-                  <td><?php echo $d['date']; ?></td>
-                  <td><?php echo $d['slot']; ?>0</td>
-                  <td>
-                      <a href="<?php echo base_url()."index.php/doctor/do_delete/".$d['id']; ?>" class="btn btn-danger btn-flat">Remove</a>
-                  </td>
-                </tr>
-                <?php
-                } ?>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
         <div class="col-md-6 ">
           <div class="box">
             <div class="box-header">
@@ -136,6 +70,72 @@
             </form>
           </div>
       </div>
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Time Slot</h3>
+            </div>
+            <!-- /.box-header -->
+
+            <!-- form start -->
+            <form class="form-horizontal" method="Post" action = "<?php echo base_url()."index.php/doctor/appdate" ?>" >
+              <div class="box-body">
+                <!-- Date -->
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                        <label>Date:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                            <input type="text" class="form-control pull-right" id="datepicker" name="tgl">
+                        </div>
+                        <br>
+                        <button type="submit" name="add" class="btn btn-primary ">Choose Date</button>
+                        <a href="<?php echo base_url()."index.php/doctor" ?>" class="btn btn-primary btn-flat">Show All</a>
+                      </div>
+                    <!-- /.input group -->
+                  </div>
+                <!-- /.form group -->
+                  <?php echo $this->session->flashdata('info'); ?>
+              </div><!-- /.box-body -->
+              <div class="box-footer">
+                <ul>
+                  <li>Choose a date from the input and click <b>Choose Date</b> to show just the chosen date appointment slot.</li>
+                  <li>Click <b>Show All</b> to show all appointment slot.</li>
+                </ul>
+              </div><!-- /.box-footer -->
+            </form>
+
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover col-sm-4">
+                <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Slot</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($data as $d) {
+              		?>
+                <tr>
+                  <td><?php echo $d['date']; ?></td>
+                  <td><?php echo $d['slot']; ?>0</td>
+                  <td>
+                      <a href="<?php echo base_url()."index.php/doctor/do_delete/".$d['id']; ?>" class="btn btn-danger btn-flat">Remove</a>
+                  </td>
+                </tr>
+                <?php
+                } ?>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
     </div>
     </section>
     <!-- /.content -->

@@ -35,6 +35,7 @@ class Auth extends CI_Controller {
             'phone' => $ambil->phone,
             'password' => $ambil->password,
             'status' => $ambil->status,
+            'expertise' => $ambil->expertise,
           );
         $this->session->set_userdata($sess);
         if($ambil->status == 'doctor'){

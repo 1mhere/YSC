@@ -55,7 +55,8 @@
                   <th>Date</th>
                   <th>Slot</th>
                   <th>Name</th>
-                  <!-- <th>Number of Skip</th> -->
+                  <th>Skip</th>
+                  <th>Late</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -66,11 +67,12 @@
                   <td><?php echo $d['date']; ?></td>
                   <td><?php echo $d['slot']; ?></td>
                   <td><?php echo $d['username']; ?></td>
-                    <!-- <td><?php echo $d['skip']; ?></td> -->
+                  <td><?php echo $d['skip']; ?></td>
+                  <td><?php echo $d['late']; ?></td>
+                  <td><?php echo date('H:i:s'); ?></td>
+
                   <td>
-                    <a class="btn btn-default btn-flat" onclick="panggil('<?php echo $d['username']; ?>');">Call</a>
-                    <a href="<?php echo base_url()."index.php/doctor/not_show/".$d['id']; ?>" class="btn btn-default btn-flat" onclick="berhenti();">Not Show</a>
-                    <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target= "#modalDone" onclick="berhenti();">Done</a>
+                    <a class="btn btn-default btn-flat" data-toggle="modal" data-target= "#modalDone" onclick="panggil('<?php echo $d['username']; ?>');">Call</a>
                   </td>
                 </tr>
                 <?php
@@ -141,16 +143,15 @@
           <div class="row">
             <div class="col-md-12">
               <ul class="list-group">
-                <h5>Patient with username <?php echo $d['username']; ?> has been processed.</h5>
-                <p>Are you sure?</p>
+                <h5>Calling patient with username <?php echo $d['username']; ?>...</h5>
               </ul>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <form>
-            <a href="" data-dismiss="modal" class="btn btn-outline pull-left">No</a>
-            <a href="<?php echo base_url()."index.php/doctor/done/".$d['id']; ?>" class="btn btn-outline">Yes</a>
+              <a href="<?php echo base_url()."index.php/doctor/not_show/".$d['id']; ?>" class="btn btn-outline" onclick="berhenti();">Not Show</a>
+            <a href="<?php echo base_url()."index.php/doctor/done/".$d['id']; ?>" class="btn btn-outline" onclick="berhenti();">Show</a>
           </form>
         </div>
       </div>

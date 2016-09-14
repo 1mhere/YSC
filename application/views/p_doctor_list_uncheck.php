@@ -55,10 +55,8 @@
                   <td><?php echo $d['date']; ?></td>
                   <td><?php echo $d['slot']; ?></td>
                   <td><?php echo $d['username']; ?></td>
-                  <!-- <td><?php echo $d['skip']; ?></td> -->
                   <td>
-                    <a href="<?php echo base_url()."index.php/doctor/skip/".$d['id']; ?>" class="btn btn-default btn-flat">Skip</a>
-                    <a href="<?php echo base_url()."index.php/doctor/check_in/".$d['id']; ?>" class="btn btn-default btn-flat">Check In</a>
+                    <a href="<?php echo base_url()."index.php/doctor/check_in/".$d['id']."/".SelisihWaktu($d['slot'],date('H:i:s')); ?>" class="btn btn-default btn-flat">Check In</a>
                   </td>
                 </tr>
                 <?php
@@ -87,7 +85,46 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
+<?php
+function SelisihWaktu($awal, $akhir){
+  $seconds = 0;
+  $detik =0;
+  $selisih = 0;
+  // if(strtotime($awal)>strtotime($akhir)){ //handle negatif
+  //   $mulai = $akhir;
+  //   $selesai = $awal;
+  // }else{
+    $mulai = $awal;
+    $selesai = $akhir;
+  // }
+  list( $g, $i, $s ) = explode( ':', $mulai );
+  $seconds += $g * 3600;
+  $seconds += $i * 60;
+  $seconds += $s;
+  $newSeconds = $seconds;
 
+  list( $g, $i, $s ) = explode( ':', $selesai );
+  $detik += $g * 3600;
+  $detik += $i * 60;
+  $detik += $s;
+  // $detikbaru = $detik; //umumnya ini
+  $detikbaru = $detik + (5*3600); //untuk kasus khusus laptop saya yang memiliki selisih 5 jam
+
+  $selisih = $detikbaru - $newSeconds;
+
+  $jam = floor( $selisih / 3600 );
+  $selisih -= $jam * 3600;
+  $menit = floor( $selisih / 60 );
+  $selisih -= $menit * 60;
+
+  if($jam<10){ $jam='0'.$jam;}
+  if($menit<10){ $menit='0'.$menit;}
+  if($selisih<10){ $selisih='0'.$selisih;}
+
+  return "{$jam}:{$menit}:{$selisih}";
+
+}
+?>
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url()."assets"?>/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->

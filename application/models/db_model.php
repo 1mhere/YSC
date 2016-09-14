@@ -18,8 +18,8 @@ class Db_model extends CI_Model {
 		return $res;
 	}
 
-	public function GetSlot($where="",$doc=""){
-		$data = $this->db->query('select * from appointment where username is not null and done=0 and checkin ='.$where.' and doctor = "'.$doc.'" order by skip,date,slot');
+	public function GetSlot($where="",$doc="",$now=""){
+		$data = $this->db->query('select * from appointment where username is not null and done=0 and checkin ='.$where.' and doctor = "'.$doc.'" and date="'.$now.'" order by date,slot');
 		return $data->result_array();
 	}
 
