@@ -24,9 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // offline
-$config['base_url'] = 'http://localhost:8090/patientApp/';
+// $config['base_url'] = 'http://localhost:8090/patientApp/';
 //online
-// $config['base_url'] = 'http://yscapp.azurewebsites.net/';
+$config['base_url'] = 'http://yscapp.azurewebsites.net/';
 
 /*
 |--------------------------------------------------------------------------
