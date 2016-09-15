@@ -150,7 +150,7 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
-                        <p>Ciwaruga
+                        <p>SMA Trinitas
                             <br>Bandung</p>
                     </div>
                     <div class="footer-col col-md-4">
