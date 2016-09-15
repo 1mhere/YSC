@@ -151,7 +151,7 @@
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
                         <p>Ciwaruga
-                            <br>Parongpong, Bandung Barat</p>
+                            <br>Bandung</p>
                     </div>
                     <div class="footer-col col-md-4">
 
