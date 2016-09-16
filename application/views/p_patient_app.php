@@ -83,7 +83,8 @@
                   <td><?php echo $d['date']; ?></td>
                   <td><?php echo $d['slot']; ?>0</td>
                   <td>
-                      <a href="" data-toggle="modal" data-target= "#modalApp" class="btn btn-default btn-flat">Choose</a>
+                      <!--<a href="" data-toggle="modal" data-target= "#modalApp" class="btn btn-default btn-flat">Choose</a>-->
+                      <a href="<?php echo base_url()."index.php/patient/Makeapp/".$d['id']; ?>" class="btn btn-default btn-flat">Choose</a>
                   </td>
                 </tr>
                 <?php
